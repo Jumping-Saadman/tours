@@ -103,3 +103,26 @@ export const getAllUser = async(req, res)=>{
     });
   }
 };
+
+// get Users by search
+export const getUserBySearch = async(req,res)=>{
+    // "i" case sensitive
+    const username = new RegExp(req.query.username,"i") 
+
+    try{
+        const users = await User.find({
+          username,
+        }).populate('reviews');
+        
+        res.status(200).json({
+          success:true, 
+          meassage:"Successful",
+          data: users,
+        });
+    } catch(err){
+        res.status(404).json({
+          success: false, 
+          meassage:"not found",       
+        });
+    }
+};

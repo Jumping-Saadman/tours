@@ -3,7 +3,8 @@ import {
   deleteUser,
   getAllUser,
   getSingleUser,
-  updateUser
+  updateUser,
+  getUserBySearch
 } from '../controllers/userController.js';
 const router = express.Router()
 
@@ -20,5 +21,8 @@ router.get('/:id', verifyUser , getSingleUser);
 
 // get All User
 router.get('/', verifyAdmin,getAllUser);
+
+// get User by search
+router.get('/search/getUserBySearch', verifyUser, getUserBySearch)
 
 export default router;

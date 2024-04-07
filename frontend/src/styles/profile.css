@@ -1,0 +1,73 @@
+.profile-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.profile-header {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: auto;
+}
+
+.profile-info {
+    text-align: center;
+}
+
+.profile-info table, th, td {
+    border: 1px solid black;
+    border-radius: 10px;
+    border-spacing: 200px;
+}
+
+.profile-info th, td {
+    background-color: #ffffff;
+    padding: 15px;
+}
+
+.profile-info tr:nth-child(even) {
+    background-color: rgba(150, 212, 212, 0.4);
+}
+
+.profile-info th:nth-child(even),
+td:nth-child(even) {
+    background-color: rgba(150, 212, 212, 0.4);
+}
+
+.profile-info tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.profile-info tr:hover {
+    background-color: #D6EEEE;
+}
+
+.profile-info h1 {
+    margin: 0;
+    font-size: 30px;
+}
+
+.profile-info p {
+    margin: 10px 0;
+    font-size: 26px;
+    color: #666;
+}
