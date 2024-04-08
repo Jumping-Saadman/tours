@@ -23,6 +23,6 @@ router.get('/:id', verifyUser , getSingleUser);
 router.get('/', verifyAdmin,getAllUser);
 
 // get User by search
-router.get('/search/getUserBySearch', verifyUser, getUserBySearch)
+router.get('/name', verifyUser, getUserBySearch)
 
 export default router;

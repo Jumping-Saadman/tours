@@ -107,7 +107,7 @@ export const getAllUser = async(req, res)=>{
 // get Users by search
 export const getUserBySearch = async(req,res)=>{
     // "i" case sensitive
-    const username = new RegExp(req.query.username,"i") 
+    const username = new RegExp(req.params.username,"i") 
 
     try{
         const users = await User.find({
