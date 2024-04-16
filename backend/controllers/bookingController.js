@@ -69,6 +69,38 @@ export const getBookingById = async (req, res) => {
   } catch (err) {
     res.status(404).json({ success: true, message: "Booking not found" });
   }
+// get single booking (by booking id: old)
+// export const getBooking = async(req,res)=>{
+//     const id = req.params.id
+
+//     try {
+//         const book = await Booking.findById(id)
+
+//         res.status(200).json({
+//         success:true, 
+//         message:"successful",
+//         data:book,
+//       });
+//     } catch (err) {
+//       res.status(404).json({success:true, message:"not found"});
+//     }
+// };
+
+// get booking by user id
+export const getBooking = async(req,res)=>{
+    const id = req.params.id
+
+    try {
+        const book = await Booking.find({ userId: id });
+
+        res.status(200).json({
+        success:true, 
+        message:"successful",
+        data:book,
+      });
+    } catch (err) {
+      res.status(404).json({success:true, message:"not found"});
+    }
 };
 
 // get all booking

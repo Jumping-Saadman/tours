@@ -4,8 +4,9 @@ import {
   getAllUser,
   getSingleUser,
   updateUser,
-} from "../controllers/userController.js";
-const router = express.Router();
+  getUserBySearch
+} from '../controllers/userController.js';
+const router = express.Router()
 
 import { verifyAdmin, verifyUser } from "../utils/verifyToken.js";
 
@@ -17,5 +18,8 @@ router.delete("/:id", verifyUser, deleteUser);
 router.get("/", verifyAdmin, getAllUser);
 // get single User
 router.get("/:id", verifyUser, getSingleUser);
+
+// get User by search
+router.get('/name', verifyUser, getUserBySearch)
 
 export default router;

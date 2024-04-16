@@ -1,13 +1,78 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Box, Text } from '@chakra-ui/layout'
-import { Tooltip } from '@chakra-ui/react'
+import {
+  Tooltip,
+  Menu,
+  MenuButton,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerHeader,
+  DrawerBody,
+  useToast,
+} from '@chakra-ui/react'
+import { Input } from '@chakra-ui/input'
 import { Button } from '@chakra-ui/button'
+import { BellIcon, ChevronDownIcon } from '@chakra-ui/icons'
+import { Avatar } from '@chakra-ui/avatar'
+import { AuthContext } from '../../context/AuthContext'
+import { useDisclosure } from '@chakra-ui/hooks'
+
+import { BASE_URL } from '../../utils/config'
+import axios from "axios";
+import ChatLoading from '../ChatLoading'
+import UserListItem from '../UserAvatar/UserListItem'
+import useFetch from '../../hooks/useFetch'
 
 const SideDrawer = () => {
   const [search, setSearch] = useState("")
   const [searchResult, setSearchResult] = useState([])
   const [loading, setLoading] = useState(false)
   const [loadingChat, setLoadingChat] = useState()
+
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { user } = useContext(AuthContext)
+
+  const toast = useToast()
+
+  const handleSearch = async () => {
+    if (!search) {
+      toast({
+        title: "Please enter something in search",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "top-left",
+      })
+    }
+
+    try {
+      setLoading(true)
+
+      // const config = {
+      //   headers: {
+      //     Authorization: `Bearer ${user.token}`,
+      //   },
+      // }
+
+      const { data } = await fetch(`${BASE_URL}/users/search/getUserBySearch?username=${search}`)
+
+      setLoading(false)
+      setSearchResult(data)
+    } catch (err) {
+      console.log(err)
+      toast({
+        title: "Error Occured!",
+        description: "Failed to Load the Search Results",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom-left",
+      })
+    }
+  }
+
+  const accessChat = (userId) => { }
 
   return (
     <Box

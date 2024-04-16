@@ -24,5 +24,8 @@ router.get("/user/:id", verifyToken, verifyUser, getBookingByUserId); // queries
 router.patch("/cancel/:id", verifyToken, verifyUser, cancelBooking);
 router.delete("/:id", verifyAdmin, deleteBooking);
 router.get("/:id", verifyToken, getBookingById);
+router.post('/', verifyUser, createBooking)
+router.get('/:id', getBooking)
+router.get('/', getAllBooking)
 
 export default router;
